@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ApiHost = void 0;
+exports.Leadsquared = exports.ApiHost = void 0;
 const lead_management_1 = __importDefault(require("./resources/lead-management"));
 const api_1 = require("./api");
 var ApiHost;
@@ -17,8 +17,8 @@ var ApiHost;
 })(ApiHost || (exports.ApiHost = ApiHost = {}));
 class Leadsquared {
     constructor(config) {
-        this.api = (0, api_1.createApiClient)(config);
+        this.api = new api_1.Api(config);
         this.leadManagement = new lead_management_1.default(this.api);
     }
 }
-exports.default = Leadsquared;
+exports.Leadsquared = Leadsquared;

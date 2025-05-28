@@ -11,9 +11,11 @@ export interface LeadSquaredConfig {
     host: ApiHost;
     accessKey: string;
     secretKey: string;
+    logger?: boolean;
 }
-export default class Leadsquared {
+export declare class Leadsquared {
     private readonly api;
     readonly leadManagement: LeadManagement;
     constructor(config: LeadSquaredConfig);
 }
+//# sourceMappingURL=index.d.ts.map

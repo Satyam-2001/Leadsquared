@@ -25,3 +25,4 @@ export type CreateBulkLeadResponse = {
     LeadId: string;
     LeadCreated: boolean;
 }[];
+//# sourceMappingURL=types.d.ts.map

@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from "axios";
+import { AxiosInstance } from "axios";
 import {
   BlukLeadData,
   CaptureLeadResponse,
@@ -9,16 +9,13 @@ import {
   LeadDataWithFields,
   UpdateLeadResponse,
 } from "./types";
-import { Response } from "@/api";
+import { Api, Response } from "@/api";
 
 export default class LeadManagement {
   private readonly api: AxiosInstance;
 
-  constructor(parentApi: AxiosInstance) {
-    this.api = axios.create({
-      ...parentApi.defaults,
-      baseURL: `${parentApi.defaults.baseURL}/LeadManagement.svc/`,
-    });
+  constructor(baseApi: Api) {
+    this.api = baseApi.create("LeadManagement.svc");
   }
 
   async captureLead(data: LeadData): Promise<CaptureLeadResponse> {

@@ -3,4 +3,9 @@ export interface Response<T = any> {
     Status: "Success";
     Message: T;
 }
-export declare function createApiClient({ host, accessKey, secretKey, }: LeadSquaredConfig): import("axios").AxiosInstance;
+export declare class Api {
+    private readonly config;
+    constructor(config: LeadSquaredConfig);
+    create(uri: string): import("axios").AxiosInstance;
+}
+//# sourceMappingURL=api.d.ts.map

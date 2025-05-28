@@ -1,6 +1,5 @@
-import { AxiosInstance } from "axios";
 import LeadManagement from "./resources/lead-management";
-import { createApiClient } from "./api";
+import { Api } from "./api";
 
 export enum ApiHost {
   SINGAPORE = "https://api.leadsquared.com/v2/",
@@ -15,14 +14,15 @@ export interface LeadSquaredConfig {
   host: ApiHost;
   accessKey: string;
   secretKey: string;
+  logger?: boolean;
 }
 
-export default class Leadsquared {
-  private readonly api: AxiosInstance;
+export class Leadsquared {
+  private readonly api: Api;
   public readonly leadManagement: LeadManagement;
 
   constructor(config: LeadSquaredConfig) {
-    this.api = createApiClient(config);
+    this.api = new Api(config);
     this.leadManagement = new LeadManagement(this.api);
   }
 }

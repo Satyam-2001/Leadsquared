@@ -4,14 +4,16 @@
   "description": "SDK for LeadSquare integration",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "type": "module",
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Satyam-2001/Leadsquared.git"
+  },
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "dev": "tsc-watch --onSuccess \"node dist/index.js\"",
+    "dev": "tsc -p tsconfig.json --watch",
+    "build": "tsc -p tsconfig.json",
     "prepublishOnly": "pnpm build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,16 +22,7 @@
     "sdk"
   ],
   "author": "Satyam Lohiya",
-  "license": "ISC",
-  "packageManager": "pnpm@10.6.3",
-  "devDependencies": {
-    "@types/node": "^22.15.23",
-    "tsc-watch": "^6.0.4",
-    "typescript": "^5.8.3"
-  },
-  "dependencies": {
-    "axios": "^1.9.0"
-  },
+  "license": "MIT",
   "exports": {
     ".": {
       "import": "./dist/index.js",
@@ -37,11 +30,12 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "dist/*"
-      ]
-    }
+  "dependencies": {
+    "axios": "^1.9.0"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.4",
+    "@types/node": "^22.15.23",
+    "typescript": "^5.8.3"
   }
 }
