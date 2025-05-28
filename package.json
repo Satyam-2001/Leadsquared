@@ -1,6 +1,6 @@
 {
   "name": "leadsquared-sdk",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "SDK for LeadSquare integration",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
