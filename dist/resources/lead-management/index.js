@@ -25,5 +25,12 @@ class LeadManagement {
         });
         return result.Message;
     }
+    async updateBuldLead(data) {
+        return this.api.post("Lead/Bulk/CreateOrUpdate", data);
+    }
+    async createLeadField(data) {
+        const result = await this.api.post("CreateLeadField", data);
+        return result.Message;
+    }
 }
 exports.default = LeadManagement;

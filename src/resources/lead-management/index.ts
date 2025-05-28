@@ -4,9 +4,11 @@ import {
   CaptureLeadResponse,
   ConvertVisitorToLeadResponse,
   CreateBulkLeadResponse,
+  CreateLeadFieldData,
   CreateLeadResponse,
   LeadData,
   LeadDataWithFields,
+  UpdateBulkLeadResponse,
   UpdateLeadResponse,
 } from "./types";
 import { Api, Response } from "@/api";
@@ -61,6 +63,20 @@ export default class LeadManagement {
       {
         params: { postUpdatedLead },
       }
+    );
+    return result.Message;
+  }
+
+  async updateBuldLead(data: BlukLeadData): Promise<UpdateBulkLeadResponse> {
+    return this.api.post("Lead/Bulk/CreateOrUpdate", data);
+  }
+
+  async createLeadField(
+    data: CreateLeadFieldData
+  ): Promise<CreateLeadResponse> {
+    const result: Response<CreateLeadResponse> = await this.api.post(
+      "CreateLeadField",
+      data
     );
     return result.Message;
   }
