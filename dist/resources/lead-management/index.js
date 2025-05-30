@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const api_client_1 = require("../../common/api-client");
+const endpoints_1 = require("../../constants/endpoints");
 class LeadManagement extends api_client_1.ApiClient {
     constructor(baseApi) {
-        super(baseApi, "LeadManagement.svc");
+        super(baseApi, endpoints_1.EndPoint.LeadManagement);
     }
     async getByPhoneNumber(phoneNumber) {
         return this.api.post("RetrieveLeadByPhoneNumber", {

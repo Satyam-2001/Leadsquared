@@ -24,7 +24,7 @@ yarn add leadsquared-sdk
 ## ⚙️ Example
 
 ```js
-import { Leadsquared, ApiHost } from "leadsquared-sdk";
+import Leadsquared, { ApiHost } from "leadsquared-sdk";
 
 const leadsquared = new Leadsquared({
   host: ApiHost.MUMBAI,
@@ -32,7 +32,7 @@ const leadsquared = new Leadsquared({
   secretKey: "YOUR_SECRET_KEY",
 });
 
-leadsquared.leadManagement.captureLead([
+const result = await leadsquared.lead.capture([
   {
     Attribute: "firstName",
     Value: "John",
@@ -43,6 +43,17 @@ leadsquared.leadManagement.captureLead([
   },
 ]);
 ```
+
+## 📚 API Resources
+
+The SDK provides access to all major Leadsquared API resources:
+
+| Resource      | Methods Available                            |
+| ------------- | -------------------------------------------- |
+| Lead          | `create`, `get`, `update`, `list`, `delete`  |
+| Activity      | `create`, `get`, `update`, `list`, `delete`, |
+| Opportunity   | `create`, `get`, `update`, `list`, `delete`  |
+| ...and more   | Full list in documentation                   |
 
 ## 🛠️ API Docs
 

@@ -13,10 +13,11 @@ import {
 } from "./types";
 import { LeadsquaredApi, Response } from "../../api";
 import { ApiClient } from "../../common/api-client";
+import { EndPoint } from "../../constants/endpoints";
 
 export default class LeadManagement extends ApiClient {
   constructor(baseApi: LeadsquaredApi) {
-    super(baseApi, "LeadManagement.svc");
+    super(baseApi, EndPoint.LeadManagement);
   }
 
   async getByPhoneNumber(phoneNumber: string): Promise<Prospect[]> {
