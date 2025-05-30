@@ -1,4 +1,3 @@
-import { AxiosInstance } from "axios";
 import {
   BlukLeadData,
   CaptureLeadResponse,
@@ -8,19 +7,25 @@ import {
   CreateLeadResponse,
   LeadData,
   LeadDataWithFields,
+  Prospect,
   UpdateBulkLeadResponse,
   UpdateLeadResponse,
 } from "./types";
-import { Api, Response } from "@/api";
+import { LeadsquaredApi, Response } from "../../api";
+import { ApiClient } from "../../common/api-client";
 
-export default class LeadManagement {
-  private readonly api: AxiosInstance;
-
-  constructor(baseApi: Api) {
-    this.api = baseApi.create("LeadManagement.svc");
+export default class LeadManagement extends ApiClient {
+  constructor(baseApi: LeadsquaredApi) {
+    super(baseApi, "LeadManagement.svc");
   }
 
-  async captureLead(data: LeadData): Promise<CaptureLeadResponse> {
+  async getByPhoneNumber(phoneNumber: string): Promise<Prospect[]> {
+    return this.api.post("RetrieveLeadByPhoneNumber", {
+      params: { phone: phoneNumber },
+    });
+  }
+
+  async capture(data: LeadData): Promise<CaptureLeadResponse> {
     const result: Response<CaptureLeadResponse> = await this.api.post(
       "Lead.Capture",
       data
@@ -28,7 +33,7 @@ export default class LeadManagement {
     return result.Message;
   }
 
-  async convertVisitorToLead(
+  async convertVisitor(
     leadId: string,
     data: LeadData
   ): Promise<ConvertVisitorToLeadResponse> {
@@ -49,11 +54,11 @@ export default class LeadManagement {
     return result.Message;
   }
 
-  async createBulkLead(data: BlukLeadData): Promise<CreateBulkLeadResponse> {
+  async createBulk(data: BlukLeadData): Promise<CreateBulkLeadResponse> {
     return this.api.post("Lead/Bulk/Create", data);
   }
 
-  async updateLead(
+  async createOrUpdate(
     data: LeadDataWithFields,
     postUpdatedLead?: boolean
   ): Promise<UpdateLeadResponse> {
@@ -67,7 +72,9 @@ export default class LeadManagement {
     return result.Message;
   }
 
-  async updateBuldLead(data: BlukLeadData): Promise<UpdateBulkLeadResponse> {
+  async createOrUpdateBulk(
+    data: BlukLeadData
+  ): Promise<UpdateBulkLeadResponse> {
     return this.api.post("Lead/Bulk/CreateOrUpdate", data);
   }
 
@@ -79,5 +86,24 @@ export default class LeadManagement {
       data
     );
     return result.Message;
+  }
+
+  async update(
+    leadId: string,
+    data: LeadData
+  ): Promise<Response<ConvertVisitorToLeadResponse>> {
+    return this.api.post("Lead.Update", data, { params: { leadId } });
+  }
+
+  async updateByPhoneNumber(
+    phoneNumber: string,
+    data: LeadData
+  ): Promise<Response<ConvertVisitorToLeadResponse>> {
+    const lead = await this.getByPhoneNumber(phoneNumber);
+    if (!lead?.length) {
+      throw new Error("Lead not found!");
+    }
+    const leadId = lead[0].ProspectID;
+    return this.api.post("Lead.Update", data, { params: { leadId } });
   }
 }

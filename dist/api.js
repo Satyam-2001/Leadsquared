@@ -3,9 +3,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Api = void 0;
+exports.LeadsquaredApi = exports.ApiHost = void 0;
 const axios_1 = __importDefault(require("axios"));
-class Api {
+var ApiHost;
+(function (ApiHost) {
+    ApiHost["SINGAPORE"] = "https://api.leadsquared.com/v2/";
+    ApiHost["UNITED_STATES"] = "https://api-us11.leadsquared.com/v2/";
+    ApiHost["MUMBAI"] = "https://api-in21.leadsquared.com/v2/";
+    ApiHost["HYDERABAD"] = "https://api-in22.leadsquared.com/v2/";
+    ApiHost["IRELAND"] = "https://api-ir31.leadsquared.com/v2/";
+    ApiHost["CANADA"] = "https://api-ca12.leadsquared.com/v2/";
+})(ApiHost || (exports.ApiHost = ApiHost = {}));
+class LeadsquaredApi {
     constructor(config) {
         this.config = config;
     }
@@ -36,4 +45,4 @@ class Api {
         return axiosClient;
     }
 }
-exports.Api = Api;
+exports.LeadsquaredApi = LeadsquaredApi;

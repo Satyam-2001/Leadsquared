@@ -1,3 +1,4 @@
+export type * from "./prospect";
 type FieldComponent = "Textbox" | "TextArea" | "Email" | "Phone" | "URL" | "Date" | "DateTime" | "Time" | "RadioButton" | "CheckBox" | "Dropdown" | "SearchableDropdown" | "DropdownWithOthers";
 type FieldType = "Text" | "Number" | "Phone" | "Email" | "Website" | "Date" | "Time" | "Boolean" | "Select";
 export type LeadField = {
@@ -50,5 +51,3 @@ export type CreateLeadFieldData = {
         Order: number;
     }[];
 };
-export {};
-//# sourceMappingURL=types.d.ts.map

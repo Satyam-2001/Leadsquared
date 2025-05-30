@@ -1,3 +1,5 @@
+export type * from "./prospect";
+
 type FieldComponent =
   | "Textbox"
   | "TextArea"
