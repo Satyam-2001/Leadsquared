@@ -2,7 +2,7 @@ import LeadManagement from "./resources/lead-management";
 import ActivityManagement from "./resources/activity-management";
 import { LeadsquaredApi, LeadSquaredConfig } from "./api";
 
-export default class Leadsquared {
+export class Leadsquared {
   public readonly api: LeadsquaredApi;
   public readonly lead: LeadManagement;
   public readonly activity: ActivityManagement;

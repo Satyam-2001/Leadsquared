@@ -1,5 +1,4 @@
-import Leadsquared from "./app";
-
 export * from "./api";
 export * from "./resources";
-export default Leadsquared;
+export * from "./constants/endpoints";
+export * from "./app";

@@ -6,7 +6,6 @@
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    // "baseUrl": "./src",
     "outDir": "./dist",
     "strictNullChecks": true,
     "declaration": true

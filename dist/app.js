@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Leadsquared = void 0;
 const lead_management_1 = __importDefault(require("./resources/lead-management"));
 const activity_management_1 = __importDefault(require("./resources/activity-management"));
 const api_1 = require("./api");
@@ -13,4 +14,4 @@ class Leadsquared {
         this.activity = new activity_management_1.default(this.api);
     }
 }
-exports.default = Leadsquared;
+exports.Leadsquared = Leadsquared;
